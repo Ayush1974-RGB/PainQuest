@@ -1,6 +1,6 @@
 // server.js — Custom Node.js server that boots Next.js + Socket.IO together.
 // Run: npm run dev (development) | npm run start (production)
-
+//Testing: http://localhost:3000
 const { createServer } = require("http");
 const { parse } = require("url");
 const next = require("next");
