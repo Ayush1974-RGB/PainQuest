@@ -11,7 +11,7 @@ export interface MotionSensorState {
   isActive: boolean;
   error: string | null;
 }
-
+// This hook is used to get the motion sensors data from the device
 const ZERO_VEC: Vector3 = { x: 0, y: 0, z: 0 };
 const ZERO_ORI: OrientationData = { alpha: null, beta: null, gamma: null, absolute: false };
 
@@ -24,7 +24,7 @@ export function useMotionSensors(onReading?: (state: MotionSensorState) => void)
   onReadingRef.current = onReading;
   const latestRef = useRef(state);
   latestRef.current = state;
-
+// requesting permission from the user
   const requestPermission = useCallback(async () => {
     setState(s => ({ ...s, permissions: { motion: "requesting", orientation: "requesting" }, error: null }));
     let motionState: PermissionState = "granted";
@@ -51,7 +51,7 @@ export function useMotionSensors(onReading?: (state: MotionSensorState) => void)
         } catch { orientationState = "denied"; }
       }
     } else { orientationState = "unsupported"; }
-
+// setting the state of the permissions
     setState(s => ({
       ...s,
       permissions: { motion: motionState, orientation: orientationState },
@@ -62,7 +62,7 @@ export function useMotionSensors(onReading?: (state: MotionSensorState) => void)
         : null,
     }));
   }, []);
-
+// getting the motion sensors data from the device
   useEffect(() => {
     const { motion, orientation } = state.permissions;
     if (motion !== "granted" && orientation !== "granted") return;
@@ -77,14 +77,14 @@ export function useMotionSensors(onReading?: (state: MotionSensorState) => void)
       setState(next);
       onReadingRef.current?.(next);
     }
-
+// getting the motion sensors data from the device
     function handleOrientation(e: DeviceOrientationEvent) {
       orient = { alpha: e.alpha, beta: e.beta, gamma: e.gamma, absolute: e.absolute };
       const next: MotionSensorState = { ...latestRef.current, orientation: orient, isActive: true };
       setState(next);
       onReadingRef.current?.(next);
     }
-
+// adding event listeners for the motion sensors
     window.addEventListener("devicemotion", handleMotion);
     window.addEventListener("deviceorientation", handleOrientation);
     return () => {
