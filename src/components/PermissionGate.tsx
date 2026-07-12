@@ -10,7 +10,6 @@ export default function PermissionGate({
     permissions.motion === "requesting" ||
     permissions.orientation === "requesting";
   const isIdle = permissions.motion === "idle";
-
   return (
     <div className="flex flex-col items-center justify-center min-h-[65vh] px-6 text-center gap-6">
       {/* Icon */}
