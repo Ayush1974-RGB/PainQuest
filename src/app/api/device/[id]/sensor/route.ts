@@ -2,10 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDevice } from "@/lib/registry";
 import type { ApiSensorResponse, ApiErrorResponse } from "@/types";
 
-/**
- * GET /api/device/:id/sensor
- * Returns the latest sensor snapshot for a connected device.
- */
+
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -18,9 +15,7 @@ export async function GET(
       { status: 400 }
     );
   }
-
   const record = getDevice(id);
-
   if (!record) {
     return NextResponse.json(
       { error: "Device not found or not connected", code: "NOT_FOUND" },
@@ -48,3 +43,6 @@ export async function GET(
     sensor: sensorFields,
   });
 }
+
+
+
