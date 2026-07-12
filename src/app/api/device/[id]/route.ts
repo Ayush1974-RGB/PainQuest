@@ -18,7 +18,6 @@ export async function GET(
       { status: 400 }
     );
   }
-
   const record = getDevice(id);
 
   if (!record) {

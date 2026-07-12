@@ -6,7 +6,6 @@ import type { PoseResult, Keypoint } from "./usePoseDetection";
 import type { ExerciseType } from "./useExerciseAnalyzer";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-
 export type VideoStatus =
   | "idle"
   | "loading_model"

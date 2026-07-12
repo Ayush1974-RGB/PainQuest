@@ -12,7 +12,6 @@ export default function HomePage() {
     setDeviceId(getOrCreateDeviceId());
     setMounted(true);
   }, []);
-
   return (
     <main className="min-h-screen bg-black flex flex-col relative overflow-hidden">
       {/* Diagonal stripe texture */}
