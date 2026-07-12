@@ -24,6 +24,7 @@ npm install
 
 # 2. Copy environment variables
 cp .env.example .env.local
+Add your variables
 # Edit .env.local as needed (defaults work for local dev)
 
 # 3. Run in development
@@ -37,6 +38,7 @@ npm run dev
 ### Production
 
 ```bash
+npm i
 npm run build
 npm run start
 ```
@@ -128,7 +130,7 @@ motion-sensor-pwa/
 
 > **Note:** Vercel's serverless runtime does not support persistent WebSockets. Deploy to a VPS or Railway for full WebSocket support.
 
-### Railway / Render / Fly.io / VPS
+### Render
 
 ```bash
 npm run build
